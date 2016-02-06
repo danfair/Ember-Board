@@ -6,6 +6,7 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('rooms', {path: 'rooms/:roomSlug'});
 });
 
 export default Router;

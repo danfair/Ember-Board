@@ -1,0 +1,24 @@
+<h4>Rooms:</h4>
+
+{{#unless rooms}}
+    <h4> No Rooms</h4>
+{{/unless}}
+
+{{#each rooms as |room|}}
+  <div class='posts'>
+      {{#link-to 'rooms' room.slug}}{{room.name}}{{/link-to}}
+  </div>
+{{/each}}
+
+{{#if session.isAuthenticated}}
+  <div class='box'>
+      <img src='{{session.currentUser.profileImageURL}}' height='70px' width='70px'/>
+      <textarea rows='2' placeholder='Add New Room' value= {{name}} onchange={{action (mut name) value='target.value'}} />
+      <textarea rows='2' placeholder='Add description' value= {{description}} onchange={{action (mut description) value='target.value'}} />
+      <button {{action 'submitRoom' name description session.currentUser.username}}>Submit</button>
+  </div>
+{{else}}
+  <div class="login">
+    <button {{action "signIn" "twitter"}}>Login to add a room</button>
+  </div>
+{{/if}}
