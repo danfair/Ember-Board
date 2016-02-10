@@ -15,7 +15,7 @@
       <img src='{{session.currentUser.profileImageURL}}' height='70px' width='70px'/>
       <textarea rows='2' placeholder='Add New Room' value= {{name}} onchange={{action (mut name) value='target.value'}} />
       <textarea rows='2' placeholder='Add description' value= {{description}} onchange={{action (mut description) value='target.value'}} />
-      <button {{action 'submitRoom' name description session.currentUser.username}}>Submit</button>
+      <button {{action 'submitRoom' name description session}}>Submit</button>
   </div>
 {{else}}
   <div class="login">
