@@ -4,11 +4,28 @@
     <h4> No Rooms</h4>
 {{/unless}}
 
-{{#each rooms as |room|}}
-  <div class='posts'>
-      {{#link-to 'rooms' room.slug}}{{room.name}}{{/link-to}}
-  </div>
-{{/each}}
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Room name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each rooms as |room|}}
+        <tr>
+          <td class='posts'>
+              {{#link-to 'rooms' room.slug}}{{room.name}}{{/link-to}}
+          </td>
+          <td class="description">
+              {{room.description}}
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
 
 {{#if session.isAuthenticated}}
   <div class='box'>

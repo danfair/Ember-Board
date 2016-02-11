@@ -15,10 +15,13 @@ export default Ember.Route.extend({
       user.then((userData) => {
         userData.save();
 
+        console.log(Ember.get(this, 'session.currentUser'));
+
         let room = this.store.createRecord('room', {
           name: name,
           description: description,
-          slug: slug
+          slug: slug,
+          user: Ember.get(this,'session.currentUser')
         });
 
         room.save();

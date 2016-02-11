@@ -4,6 +4,6 @@ export default DS.Model.extend({
   name: DS.attr('string'),
   slug: DS.attr('string'),
   description: DS.attr('string'),
-  user: DS.belongsTo('user'),
+  user: DS.belongsTo('user', { async: true }),
   posts: DS.hasMany('post')
 });
