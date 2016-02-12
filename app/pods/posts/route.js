@@ -23,11 +23,11 @@ export default Ember.Route.extend({
 
 			  comment.save()
 			  	.then(function() {
-					post.save();
-				})
-				.then(function() {
-					userData.save();
-				});
+  					post.save();
+  				})
+  				.then(function() {
+  					userData.save();
+  				});
 			});
 		}
 	}
