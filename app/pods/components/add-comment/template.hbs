@@ -1,11 +1,15 @@
 {{#unless post.comments}}
-	<h1>Sorry, no comments yet. Be the first: </h1>
+	<div class="alert alert-info" style="margin: 50px 0;">Sorry, no comments yet. Be the first: </div>
 {{/unless}}
 
 {{#each post.comments as |comment|}}
-	{{comment.body}}<br>
-	<img src="{{comment.user.avatar}}"> {{comment.user.username}} <br>
-	{{comment.date}}
+  <div class="panel panel-default">
+    <div class="panel-body">
+    	{{comment.body}}<br>
+    	<img src="{{comment.user.avatar}}"> {{comment.user.username}} <br>
+    	{{comment.date}}
+    </div>
+  </div>
 {{/each}}
 
 {{#if session.isAuthenticated}}

@@ -1,4 +1,4 @@
-<h4>Rooms:</h4>
+<h4>EmberBoard -- Rooms</h4>
 
 {{#unless rooms}}
     <h4> No Rooms</h4>
@@ -28,12 +28,17 @@
 </div>
 
 {{#if session.isAuthenticated}}
-  <div class='box'>
+  <h3>Add a new room: </h3>
+  <form>
       <img src='{{session.currentUser.profileImageURL}}' height='70px' width='70px'/>
-      <textarea rows='2' placeholder='Add New Room' value= {{name}} onchange={{action (mut name) value='target.value'}} />
-      <textarea rows='2' placeholder='Add description' value= {{description}} onchange={{action (mut description) value='target.value'}} />
-      <button {{action 'submitRoom' name description session}}>Submit</button>
-  </div>
+      <div class="form-group">
+        <input type="text" class="form-control" rows='2' placeholder='Add New Room' value= {{name}} onchange={{action (mut name) value='target.value'}} />
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" rows='2' placeholder='Add description' value= {{description}} onchange={{action (mut description) value='target.value'}} />
+      </div>
+      <button {{action 'submitRoom' name description session}} class="btn btn-default">Submit</button>
+  </form>
 {{else}}
   <div class="login">
     <button {{action "signIn" "twitter"}}>Login to add a room</button>

@@ -1,11 +1,15 @@
 {{#unless room.posts}}
-	<h1>Sorry, no posts yet. Be the first: </h1>
+	<div class="alert alert-info" style="margin: 50px 0;"><b>Sorry, no posts yet.</b> Be the first: </div>
 {{/unless}}
 
 {{#each room.posts as |post|}}
-	{{#link-to 'posts' room.id post.id}}{{post.title}}{{/link-to}}<br>
-	<img src="{{post.user.avatar}}"> {{post.user.username}} <br>
-	{{post.date}}
+  <div class="panel panel-default">
+    <div class="panel-body">
+    	<h3>{{#link-to 'posts' room.id post.id}}{{post.title}}{{/link-to}}</h3>
+    	Posted by: {{post.user.username}} <br>
+    	{{post.date}}
+    </div>
+  </div>
 {{/each}}
 
 {{#if session.isAuthenticated}}

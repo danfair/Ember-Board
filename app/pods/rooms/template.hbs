@@ -1,6 +1,5 @@
-{{model.name}} <br>
-{{model.description}} <br>
-Created by: <br>
+<h1>{{model.name}} <small>{{model.description}}</small></h1>
+<h5>Room created by:</h5>
 <img src="{{model.admin.avatar}}"> {{model.admin.username}}
 
 {{#add-posts session=session room=model submitPost="submitPost"}} {{/add-posts}}

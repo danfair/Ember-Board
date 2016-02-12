@@ -1,5 +1,4 @@
-{{model.title}} <br>
-{{model.date}} <br>
-{{model.body}} <br>
+<h1>{{model.title}}  <small>{{model.date}}</small></h1>
+<p>{{model.body}} </p>
 
 {{#add-comment post=model submitComment="submitComment" session=session}}{{/add-comment}}
