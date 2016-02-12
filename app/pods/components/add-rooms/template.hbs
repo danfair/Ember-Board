@@ -16,7 +16,7 @@
       {{#each rooms as |room|}}
         <tr>
           <td class='posts'>
-              {{#link-to 'rooms' room.slug}}{{room.name}}{{/link-to}}
+              {{#link-to 'rooms' room.id}}{{room.name}}{{/link-to}}
           </td>
           <td class="description">
               {{room.description}}

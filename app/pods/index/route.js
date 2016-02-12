@@ -13,18 +13,20 @@ export default Ember.Route.extend({
       let user = getOrCreateUser(uid, Ember.get(this,'session.currentUser.username'), Ember.get(this, 'session.currentUser.profileImageURL'), this.store);
 
       user.then((userData) => {
-        userData.save();
-
-        console.log(Ember.get(this, 'session.currentUser'));
 
         let room = this.store.createRecord('room', {
           name: name,
           description: description,
           slug: slug,
-          user: Ember.get(this,'session.currentUser')
+          admin: Ember.get(this,'session.currentUser')
         });
 
-        room.save();
+        userData.get('rooms').addObject(room);
+
+        room.save().then(function() {
+          userData.save();
+        });
+
       });
     }
   }

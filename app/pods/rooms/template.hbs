@@ -1,1 +1,6 @@
-{{outlet}}
+{{model.name}} <br>
+{{model.description}} <br>
+Created by: <br>
+<img src="{{model.admin.avatar}}"> {{model.admin.username}}
+
+{{#add-posts session=session room=model submitPost="submitPost"}} {{/add-posts}}

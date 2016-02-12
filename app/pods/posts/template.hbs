@@ -1,1 +1,5 @@
-{{outlet}}
+{{model.title}} <br>
+{{model.date}} <br>
+{{model.body}} <br>
+
+{{#add-comment post=model submitComment="submitComment" session=session}}{{/add-comment}}

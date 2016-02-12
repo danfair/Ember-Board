@@ -1,0 +1,22 @@
+{{#unless room.posts}}
+	<h1>Sorry, no posts yet. Be the first: </h1>
+{{/unless}}
+
+{{#each room.posts as |post|}}
+	{{#link-to 'posts' room.id post.id}}{{post.title}}{{/link-to}}<br>
+	<img src="{{post.user.avatar}}"> {{post.user.username}} <br>
+	{{post.date}}
+{{/each}}
+
+{{#if session.isAuthenticated}}
+  <div class='box'>
+      <img src='{{session.currentUser.profileImageURL}}' height='70px' width='70px'/>
+      <textarea rows='2' placeholder='Add New Post' value= {{title}} onchange={{action (mut title) value='target.value'}} />
+      <textarea rows='2' placeholder='Post content' value= {{body}} onchange={{action (mut body) value='target.value'}} />
+      <button {{action 'submitPost' title body room session}}>Submit</button>
+  </div>
+{{else}}
+  <div class="login">
+    <button {{action "signIn" "twitter"}}>Login to add a post</button>
+  </div>
+{{/if}}
