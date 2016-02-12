@@ -2,22 +2,33 @@
 	<div class="alert alert-info" style="margin: 50px 0;">Sorry, no comments yet. Be the first: </div>
 {{/unless}}
 
+<h4 style="margin-top: 50px;">Comments:</h4>
 {{#each post.comments as |comment|}}
   <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{comment.user.username}} said...</h3>
+    </div>
     <div class="panel-body">
-    	{{comment.body}}<br>
-    	<img src="{{comment.user.avatar}}"> {{comment.user.username}} <br>
+    	<strong>{{comment.body}}</strong><br>
+      <hr>
     	{{comment.date}}
     </div>
   </div>
 {{/each}}
 
 {{#if session.isAuthenticated}}
-  <div class='box'>
-      <img src='{{session.currentUser.profileImageURL}}' height='70px' width='70px'/>
-      <textarea rows='2' placeholder='Add New Comment' value= {{body}} onchange={{action (mut body) value='target.value'}} />
-      <button {{action 'submitComment' body post session}}>Submit</button>
-  </div>
+  <form class='box'>
+    <div style="margin-bottom: 25px;float:left">
+        <img style="border-radius:9999px;" src='{{session.currentUser.profileImageURL}}' height='70px' width='70px'/><br>
+        <div style="text-align:center;">{{session.currentUser.username}}</div>
+    </div>
+    <div style="float:right;width:calc(100% - 100px);">
+      <div class="form-group">
+        <textarea class="form-control" rows='2' placeholder='Add New Comment' value= {{body}} onchange={{action (mut body) value='target.value'}} />
+      </div>
+      <button class="btn btn-default" {{action 'submitComment' body post session}}>Submit</button>
+    </div>
+  </form>
 {{else}}
   <div class="login">
     <button {{action "signIn" "twitter"}}>Login to add a room</button>

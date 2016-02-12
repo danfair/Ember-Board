@@ -1,5 +1,7 @@
+{{#link-to 'index'}}Back to rooms{{/link-to}}
+
 <h1>{{model.name}} <small>{{model.description}}</small></h1>
 <h5>Room created by:</h5>
-<img src="{{model.admin.avatar}}"> {{model.admin.username}}
+<img style="margin-bottom: 50px;border-radius:9999px;" src="{{model.admin.avatar}}"> {{model.admin.username}}
 
 {{#add-posts session=session room=model submitPost="submitPost"}} {{/add-posts}}

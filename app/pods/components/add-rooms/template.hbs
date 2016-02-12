@@ -10,6 +10,8 @@
       <tr>
         <th>Room name</th>
         <th>Description</th>
+        <th>Posts</th>
+        <th>Admin</th>
       </tr>
     </thead>
     <tbody>
@@ -21,6 +23,12 @@
           <td class="description">
               {{room.description}}
           </td>
+          <td class="description">
+              {{room.posts.length}}
+          </td>
+          <td class="description">
+              {{room.admin.username}}
+          </td>
         </tr>
       {{/each}}
     </tbody>
@@ -30,14 +38,19 @@
 {{#if session.isAuthenticated}}
   <h3>Add a new room: </h3>
   <form>
-      <img src='{{session.currentUser.profileImageURL}}' height='70px' width='70px'/>
-      <div class="form-group">
-        <input type="text" class="form-control" rows='2' placeholder='Add New Room' value= {{name}} onchange={{action (mut name) value='target.value'}} />
+      <div style="margin-bottom: 25px;float:left">
+          <img style="border-radius:9999px;" src='{{session.currentUser.profileImageURL}}' height='70px' width='70px'/><br>
+          <div style="text-align:center;">{{session.currentUser.username}}</div>
       </div>
-      <div class="form-group">
-        <textarea class="form-control" rows='2' placeholder='Add description' value= {{description}} onchange={{action (mut description) value='target.value'}} />
+      <div style="float:right;width:calc(100% - 100px);">
+        <div class="form-group">
+          <input type="text" class="form-control" rows='2' placeholder='Add New Room' value= {{name}} onchange={{action (mut name) value='target.value'}} />
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" rows='2' placeholder='Add description' value= {{description}} onchange={{action (mut description) value='target.value'}} />
+        </div>
+        <button {{action 'submitRoom' name description session}} class="btn btn-default">Submit</button>
       </div>
-      <button {{action 'submitRoom' name description session}} class="btn btn-default">Submit</button>
   </form>
 {{else}}
   <div class="login">

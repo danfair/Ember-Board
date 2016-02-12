@@ -1,4 +1,15 @@
-<h1>{{model.title}}  <small>{{model.date}}</small></h1>
-<p>{{model.body}} </p>
+{{#link-to 'rooms' model.room.id}}Back to room{{/link-to}}
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{model.title}}</h3>
+  </div>
+  <div class="panel-body">
+    {{model.body}}<br><br>
+    <hr>
+    Posted by <strong>{{model.user.username}}</strong> <br>
+    <em>{{model.date}}</em>
+  </div>
+</div>
 
 {{#add-comments post=model submitComment="submitComment" session=session}}{{/add-comments}}

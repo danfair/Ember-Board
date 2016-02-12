@@ -16,7 +16,8 @@ export default Ember.Route.extend({
 	        title: title,
 	        body: body,
 	        user: Ember.get(this,'session.currentUser'),
-	        date: new Date()
+	        date: new Date(),
+          room: room
 	      });
 
 	      room.get('posts').addObject(post);
@@ -24,12 +25,12 @@ export default Ember.Route.extend({
 
 	      post.save()
 	      	.then(function() {
-				room.save();
-			})
-			.then(function() {
-				userData.save();
-			});
-	    });
+    				room.save();
+    			})
+    			.then(function() {
+    				userData.save();
+    			});
+      });
 	  }
 	}
 });
