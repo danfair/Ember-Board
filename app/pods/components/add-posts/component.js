@@ -6,6 +6,14 @@ export default Ember.Component.extend({
 			this.sendAction('submitPost', title, body, room, session);
 			this.set('title', '');
 			this.set('body', '');
-		}
+		},
+
+	    signIn(provider) {
+	      this.sendAction('signIn', provider);
+	    },
+
+	    signOut() {
+	      this.sendAction('signOut');
+	    }
 	}
 });

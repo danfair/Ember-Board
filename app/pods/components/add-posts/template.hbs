@@ -29,6 +29,9 @@
         <button class="btn btn-default" {{action 'submitPost' title body room session}}>Submit</button>
       </div>
   </form>
+  <div class="logout">
+    <button class="btn btn-default" {{action "signOut"}}>Logout</button>
+  </div>
 {{else}}
   <div class="login">
     <button {{action "signIn" "twitter"}}>Login to add a post</button>

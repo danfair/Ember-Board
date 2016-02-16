@@ -4,4 +4,4 @@
 <h5>Room created by:</h5>
 <img style="margin-bottom: 50px;border-radius:9999px;" src="{{model.admin.avatar}}"> {{model.admin.username}}
 
-{{#add-posts session=session room=model submitPost="submitPost"}} {{/add-posts}}
+{{#add-posts session=session room=model submitPost="submitPost" signIn="signIn" signOut="signOut"}} {{/add-posts}}

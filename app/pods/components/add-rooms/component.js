@@ -10,6 +10,10 @@ export default Ember.Component.extend({
 
     signIn(provider) {
       this.sendAction('signIn', provider);
+    },
+
+    signOut() {
+      this.sendAction('signOut');
     }
   }
 });

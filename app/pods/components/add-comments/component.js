@@ -5,6 +5,14 @@ export default Ember.Component.extend({
 		submitComment(body, post, session) {
 			this.sendAction('submitComment', body, post, session);
 			this.set('body', '');
-		}
+		},
+
+	    signIn(provider) {
+	      this.sendAction('signIn', provider);
+	    },
+
+	    signOut() {
+	      this.sendAction('signOut');
+	    }
 	}
 });
