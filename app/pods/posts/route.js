@@ -15,7 +15,7 @@ export default Ember.Route.extend({
 			  let comment = this.store.createRecord('comment', {
 			    body: body,
 			    user: Ember.get(this,'session.currentUser'),
-			    date: new Date()
+          timestamp: new Date().getTime()
 			  });
 
 			  post.get('comments').addObject(comment);

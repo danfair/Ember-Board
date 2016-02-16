@@ -7,7 +7,7 @@
     <div class="panel-body">
     	<h3>{{#link-to 'posts' room.id post.id}}{{post.title}}{{/link-to}}</h3>
     	Posted by: {{post.user.username}} <br>
-    	<em>{{post.date}}</em>
+    	<em>{{format-date post.timestamp}}</em>
     </div>
   </div>
 {{/each}}
@@ -34,6 +34,6 @@
   </div>
 {{else}}
   <div class="login">
-    <button {{action "signIn" "twitter"}}>Login to add a post</button>
+    <button class="btn btn-default" {{action "signIn" "twitter"}}>Login to add a post</button>
   </div>
 {{/if}}

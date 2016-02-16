@@ -5,6 +5,6 @@ export default DS.Model.extend({
   body: DS.attr('string'),
   comments: DS.hasMany('comment'),
   user: DS.belongsTo('user'),
-  date: DS.attr('date'),
+  timestamp: DS.attr('number'),
   room: DS.belongsTo('room')
 });

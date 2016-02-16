@@ -16,7 +16,7 @@ export default Ember.Route.extend({
 	        title: title,
 	        body: body,
 	        user: Ember.get(this,'session.currentUser'),
-	        date: new Date(),
+          timestamp: new Date().getTime(),
           room: room
 	      });
 

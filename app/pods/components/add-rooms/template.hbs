@@ -35,6 +35,8 @@
   </table>
 </div>
 
+{{#pagination-block model=rooms prev="prev" next="next"}}{{/pagination-block}}
+
 {{#if session.isAuthenticated}}
   <h3>Add a new room: </h3>
   <form>

@@ -14,6 +14,14 @@ export default Ember.Component.extend({
 
     signOut() {
       this.sendAction('signOut');
+    },
+
+    prev() {
+      this.sendAction('prev');
+    },
+
+    next() {
+      this.sendAction('next');
     }
   }
 });
