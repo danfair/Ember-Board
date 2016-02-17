@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+
   actions: {
     submitRoom(name, description, session) {
       this.sendAction('submitRoom', name, description, session);

@@ -13,7 +13,7 @@ export default Ember.Route.extend({
       orderBy: "timestamp",
       startAt: this.get('startAt'),
       endAt: this.get('endAt'),
-      limitToLast: PAGE_SIZE
+      limitToFirst: PAGE_SIZE
     });
   },
 
@@ -30,7 +30,7 @@ export default Ember.Route.extend({
           description: description,
           slug: slug,
           admin: Ember.get(this,'session.currentUser'),
-          timestamp: new Date().getTime()
+          timestamp: new Date().getTime() * -1
         });
 
         userData.get('rooms').addObject(room);
@@ -40,18 +40,20 @@ export default Ember.Route.extend({
         });
 
       });
+
+      this.refresh();
     },
 
     prev() {
       let timestamp = this.get('currentModel').get('firstObject.timestamp');
       this.set('startAt', null);
-      this.set('endAt', timestamp);
+      this.set('endAt', timestamp - 1);
       this.refresh();
     },
 
     next() {
       let timestamp = this.get('currentModel').get('lastObject.timestamp');
-      this.set('startAt', timestamp);
+      this.set('startAt', timestamp + 1);
       this.set('endAt', null);
       this.refresh();
     }
